@@ -32,6 +32,9 @@ else
 fi
 
 echo "arguments: $1"
+echo "working on: $image_tag"
+echo "project: $PROJECT_ID"
+echo "deploy to: $ENVIRONMENT"
 
 for var in $(jq -r '.[]' <<< "$1"); do
     kustomize_edit_build $var
