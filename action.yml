@@ -1,0 +1,16 @@
+# action.yml
+name: 'kustomize'
+description: 'Kustomize your k8s in Github actions'
+inputs:
+  work-dir:  # id of input
+    description: 'Where to kustomize'
+    required: true
+    default: './'
+  image:
+    description: 'What to kustomize'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - cd ${{ inputs.work-dir }} && kustomize edit set image ${{ inputs.image }}'
