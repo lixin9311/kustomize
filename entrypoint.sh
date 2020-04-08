@@ -28,7 +28,7 @@ workspace=$(pwd)
 mkdir -p $dist
 
 if [ -z "$TAG_NAME" ]; then
-    image_tag="$SHORT_SHA"
+    image_tag="${GITHUB_SHA::8}"
 else
     image_tag="$TAG_NAME"
 fi
