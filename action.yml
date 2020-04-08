@@ -13,4 +13,4 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - cd ${{ inputs.work-dir }} && kustomize edit set image ${{ inputs.image }}'
+    - cd ${{ inputs.work-dir }} && kustomize edit set image ${{ inputs.image }} && kustomize build
