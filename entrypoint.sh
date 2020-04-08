@@ -5,6 +5,8 @@
 # ENVIRONMENT
 # SVC_PREFIX
 
+set -e
+
 kustomize_edit_build() {
     local service=$1
     cd $SVC_PREFIX &&
@@ -15,7 +17,7 @@ kustomize_edit_build() {
     echo 'working in' $(pwd) &&
     kustomize edit set image $service=gcr.io/$PROJECT_ID/$service:$image_tag > /dev/null 2>&1 &&
     kustomize build > $dist/$service.yaml &&
-    echo "$service manifest generated"
+    echo "$service manifest generated" &&
     cd $workspace
 }
 
